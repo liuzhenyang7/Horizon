@@ -1,7 +1,7 @@
 {
   "ai": {
     "provider": "openai-chatgpt",
-    "model": "gpt-6.1-sol",
+    "model": "gpt-6-luna",
     "temperature": 0.3,
     "max_tokens": 8192,
     "throttle_sec": 0,
