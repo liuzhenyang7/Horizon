@@ -1,0 +1,151 @@
+{
+  "ai": {
+    "provider": "openai-chatgpt",
+    "model": "MODEL_SLUG",
+    "temperature": 0.3,
+    "max_tokens": 8192,
+    "throttle_sec": 0,
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "analysis_concurrency": 1,
+    "enrichment_concurrency": 1
+  },
+  "processing": {
+    "profiles_dir": "profiles",
+    "default_profile": "tech-news",
+    "profile_settings": {
+      "tech-news": {
+        "threshold": 6.0,
+        "topic_dedup": true
+      },
+      "ai-creator": {
+        "threshold": 6.0,
+        "topic_dedup": true
+      }
+    }
+  },
+  "sources": {
+    "hackernews": {
+      "enabled": true,
+      "fetch_top_stories": 30,
+      "min_score": 100,
+      "category": "tech",
+      "profile": [
+        "tech-news",
+        "ai-creator"
+      ]
+    },
+    "reddit": {
+      "enabled": true,
+      "fetch_comments": 5,
+      "subreddits": [
+        {
+          "subreddit": "MachineLearning",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 50,
+          "category": "ai",
+          "profile": [
+            "tech-news",
+            "ai-creator"
+          ]
+        },
+        {
+          "subreddit": "LocalLLaMA",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 50,
+          "category": "ai",
+          "profile": [
+            "tech-news",
+            "ai-creator"
+          ]
+        }
+      ]
+    },
+    "ossinsight": {
+      "enabled": true,
+      "period": "past_24_hours",
+      "languages": [
+        "All",
+        "Python",
+        "TypeScript"
+      ],
+      "keywords": [],
+      "min_stars": 10,
+      "max_items": 30,
+      "category": "github-trending",
+      "profile": [
+        "tech-news",
+        "ai-creator"
+      ]
+    },
+    "rss": [
+      {
+        "name": "The New Yorker",
+        "url": "https://www.newyorker.com/feed/rss",
+        "enabled": true,
+        "category": "culture",
+        "profile": [
+          "tech-news",
+          "ai-creator"
+        ]
+      },
+      {
+        "name": "Simon Willison",
+        "url": "https://simonwillison.net/atom/everything/",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": [
+          "tech-news",
+          "ai-creator"
+        ]
+      }
+    ]
+  },
+  "collection": {
+    "time_window_hours": 24
+  },
+  "digest": {
+    "max_items": 20,
+    "profile_order": [
+      "tech-news",
+      "ai-creator"
+    ],
+    "category_groups": {},
+    "default_group": "other",
+    "default_group_limit": null
+  },
+  "webhook": {
+    "enabled": false,
+    "url_env": "HORIZON_WEBHOOK_URL",
+    "delivery": "summary",
+    "overview_position": "first",
+    "platform": "generic",
+    "layout": "markdown",
+    "fallback_layout": "markdown",
+    "languages": null,
+    "request_body": "",
+    "headers": ""
+  },
+  "email": {
+    "enabled": false,
+    "smtp_server": "smtp.qq.com",
+    "smtp_port": 465,
+    "smtp_username": null,
+    "imap_enabled": false,
+    "imap_server": "imap.qq.com",
+    "imap_port": 993,
+    "email_address": null,
+    "password_env": "EMAIL_PASSWORD",
+    "sender_name": "Horizon",
+    "subscribe_keyword": "SUBSCRIBE",
+    "unsubscribe_keyword": "UNSUBSCRIBE"
+  }
+}
