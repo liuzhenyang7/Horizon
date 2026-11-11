@@ -9,8 +9,8 @@
       "en",
       "zh"
     ],
-    "analysis_concurrency": 1,
-    "enrichment_concurrency": 1
+    "analysis_concurrency": 4,
+    "enrichment_concurrency": 2
   },
   "processing": {
     "profiles_dir": "profiles",
