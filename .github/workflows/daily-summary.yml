@@ -31,6 +31,11 @@ jobs:
 
       - name: Prepare GitHub Actions config
         run: cp data/config.github.json data/config.json
+      - name: Restore ChatGPT credentials
+        env:
+          HORIZON_CHATGPT_CREDENTIALS: ${{ secrets.HORIZON_CHATGPT_CREDENTIALS }}
+        run: mkdir -p ~/.config/horizon/chatgpt && printf '%s' "$HORIZON_CHATGPT_CREDENTIALS" > ~/.config/horizon/chatgpt/credentials.json && chmod 600 ~/.config/horizon/chatgpt/credentials.json
+        
 
       - name: Run Horizon
         env:
