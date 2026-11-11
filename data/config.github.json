@@ -142,7 +142,7 @@
     "imap_enabled": false,
     "imap_server": "imap.qq.com",
     "imap_port": 993,
-    "email_address": null,
+    "email_address": "xxx@qq.com",
     "password_env": "EMAIL_PASSWORD",
     "sender_name": "Horizon",
     "subscribe_keyword": "SUBSCRIBE",
